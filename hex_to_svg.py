@@ -63,11 +63,9 @@ if st.button("Run"):
             continue
         
         # Create a new SVG with a simplified structure
-        svg_content = f'''
-        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        svg_content = f'''<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="64" height="64" fill="{hex_value}"/>
-        </svg>
-        '''
+        </svg>'''
         
         # Save the SVG content to a file
         svg_path = f"SVGs/{hex_value}.svg"
