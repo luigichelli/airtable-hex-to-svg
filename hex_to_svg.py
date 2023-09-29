@@ -1,6 +1,5 @@
 import streamlit as st
 import requests
-import svgwrite
 import subprocess
 import time
 import os
