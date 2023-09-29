@@ -68,13 +68,19 @@ if st.button("Run"):
         dwg.saveas(svg_path)
     
     # Step 2: Commit and push all SVGs to GitHub
-    try:
-        subprocess.run(["git", "add", "SVGs/*.svg"], check=True)
-        subprocess.run(["git", "commit", "-m", "Add SVGs"], check=True)
-        subprocess.run(["git", "push", "origin", "main"], check=True)
-    except subprocess.CalledProcessError as e:
-        st.error(f"Failed to update GitHub: {e}")
-        st.stop()
+    commit_status = subprocess.run(["git", "status", "--porcelain"], stdout=subprocess.PIPE)
+    if commit_status.stdout:
+        # There are changes to commit
+        try:
+            subprocess.run(["git", "add", "."], check=True)
+            subprocess.run(["git", "commit", "-m", "Add SVGs"], check=True)
+            subprocess.run(["git", "push", "origin", "main"], check=True)
+        except subprocess.CalledProcessError as e:
+            st.error(f"Failed to update GitHub: {e}")
+            st.stop()
+    else:
+        # There are no changes to commit
+        st.info("No changes to commit.")
 
     # Wait for some time or ask for user confirmation
     st.info("Waiting for GitHub to process the new files. This could take a few seconds.")
