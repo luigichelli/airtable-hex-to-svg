@@ -16,6 +16,7 @@ if not os.path.exists("SVGs"):
 
 # Your GitHub repository where SVG files will be stored
 GITHUB_REPO_URL = config("GITHUB_REPO_URL")
+GITHUB_RAW_URL = config("GITHUB_RAW_URL")
 
 # Your Airtable settings with Base ID
 API_URL_BASE = config("BASE_URL")
@@ -97,7 +98,7 @@ if st.button("Run"):
             continue
         
         encoded_hex_value = quote(hex_value, safe='') # Encode the '#' character
-        svg_url = f"{GITHUB_REPO_URL}/main/SVGs/{encoded_hex_value}.svg"
+        svg_url = f"{GITHUB_RAW_URL}/{encoded_hex_value}.svg"
         st.write(svg_url)
         
         try:
