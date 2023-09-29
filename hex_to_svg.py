@@ -63,10 +63,17 @@ if st.button("Run"):
             st.write(f"[Warning] Skipping record {record_id} due to missing or invalid HEX value.")
             continue
         
-        dwg = svgwrite.Drawing(f"SVGs/{hex_value}.svg", profile="tiny")
-        dwg.add(dwg.rect(insert=(0, 0), size=(64, 64), fill=hex_value))
+        # Create a new SVG with a simplified structure
+        svg_content = f'''
+        <svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+            <rect width="64" height="64" fill="{hex_value}" />
+        </svg>
+        '''
+        
+        # Save the SVG content to a file
         svg_path = f"SVGs/{hex_value}.svg"
-        dwg.saveas(svg_path)
+        with open(svg_path, "w") as svg_file:
+            svg_file.write(svg_content)
     
     # Step 2: Commit and push all SVGs to GitHub
     commit_status = subprocess.run(["git", "status", "--porcelain"], stdout=subprocess.PIPE)
