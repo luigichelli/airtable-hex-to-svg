@@ -39,7 +39,7 @@ This script, `hex_to_svg.py`, is designed to extract hex color values from an Ai
 To run this script, you need to set up a `.env` file in the root directory of the project. This `.env` file should contain the following environment variables:
 
 ```plaintext
-API_KEY=your_airtable_api_key
+API_KEY=your_airtable_personal_access_token
 BASE_URL=your_airtable_base_url
 TABLE_NAME=your_airtable_table_name
 HEX_FIELD=your_hex_field_name
@@ -60,7 +60,7 @@ Replace the values with your own information.
 
 ### Usage
 
-After setting up your `.env` file, you can run the script with:
+After setting up your `.env` file add it to your `.gitignore` so your access token won't be exposed, then you can run the script with:
 
 ```bash
 streamlit run hex_to_svg.py
