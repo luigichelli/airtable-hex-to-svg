@@ -6,9 +6,6 @@ import os
 from urllib.parse import quote
 from decouple import config
 
-# Print the current working directory
-print("Current working directory:", os.getcwd())
-
 # Create a subfolder named "SVGs" if it doesn't exist
 if not os.path.exists("SVGs"):
     os.makedirs("SVGs")
