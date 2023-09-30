@@ -84,7 +84,7 @@ if st.button("Run"):
         # There are no changes to commit
         st.info("No changes to commit.")
 
-    # Wait for some time or ask for user confirmation
+    # Wait for some time to allow github upload
     st.info("Waiting for GitHub to process the new files. This could take a few seconds.")
     time.sleep(5)  # Adjust as needed.
 
